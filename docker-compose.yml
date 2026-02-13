@@ -1,0 +1,26 @@
+# project-root/docker-compose.yml
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: azki_profile_backend
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/app
+    env_file:
+      - ./backend/.env
+
+  frontend:
+    build: ./frontend
+    container_name: azki_profile_frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NEXT_PUBLIC_API_BASE=http://localhost:4000
+    depends_on:
+      - backend

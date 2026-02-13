@@ -1,0 +1,405 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   Fonts (Vazirmatn)
+   Put files in: /public/fonts/vazir/
+   ========================= */
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/vazir/Vazirmatn-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/vazir/Vazirmatn-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/vazir/Vazirmatn-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/vazir/Vazirmatn-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/vazir/Vazirmatn-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================
+   Theme variables
+   (Removed @import 'tailwindcss' and @theme inline to avoid build issues)
+   ========================= */
+:root {
+  --background-app-rgb: #F4F5F7;
+  --color-primary-900: #1366d6;
+  --color-primary-800: #5C7CFF;
+  --color-primary-700: #6E8AFF;
+  --color-primary-600: #8099FF;
+  --color-primary-500: #92A7FF;
+  --color-primary-400: #A4B6FF;
+  --color-primary-300: #B7C5FF;
+  --color-primary-200: #C9D3FF;
+  --color-primary-100: #DBE2FF;
+  --color-primary-50: #E4DFFF;
+
+  --color-secondary-900: #2A2D53;
+  --color-secondary-800: #3F4264;
+  --color-secondary-700: #555775;
+  --color-secondary-600: #6A6C87;
+  --color-secondary-500: #7F8198;
+  --color-secondary-400: #9496A9;
+  --color-secondary-300: #AAABBA;
+  --color-secondary-200: #BFC0CB;
+  --color-secondary-100: #D4D5DD;
+  --color-secondary-50: #DFDFE5;
+
+  --color-success: #00C073;
+  --color-warning: #FF9900;
+  --color-error: #FF4757;
+
+  --color-red-500: #EF4444;
+  --color-red-300: #FCA5A5;
+
+  --color-bg-form: #f8f8f8;
+  --color-blue-main: #038FFF;
+  --color-blur-box: #ffffff8f;
+}
+
+/* Base fixes */
+
+
+
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  user-select: none;
+  font-family: "Vazirmatn", system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    sans-serif;
+  background-color: var(--background-app-rgb);
+  color: var(--color-secondary-800);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optional: Persian-first */
+html[lang="fa"],
+body {
+  direction: ltr;
+}
+
+/* Prevent layout issues */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Images and media */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Links */
+a {
+  font-weight: 700;
+  transition: all 0.3s;
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  cursor: pointer;
+  color: var(--color-primary-900);
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  margin-right: 0.3rem;
+  margin-left: 0.3rem;
+}
+
+p {
+  color: var(--color-secondary-700);
+}
+
+.categoryLi {
+  padding: 0.3rem;
+  border-radius: 10px;
+}
+.categoryLi:hover {
+  background: var(--color-primary-100);
+}
+
+select {
+  border: none;
+  outline: none;
+  border-radius: 0.5em;
+  padding: 0.7rem;
+  background-color: #fafafa;
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
+  transition: 300ms ease-in-out;
+  color: var(--color-primary-900);
+  font-weight: 700;
+}
+select:focus {
+  background-color: white;
+  transform: scale(1.05);
+  box-shadow: 13px 13px 100px #dddddd, -13px -13px 100px #ffffff;
+}
+
+.input {
+  border: 2px solid #b4b3b3;
+  height: 2.5em;
+  padding-left: 0.8em;
+  outline: none;
+  overflow: hidden;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  transition: all 0.5s;
+}
+.input:hover,
+.input:focus {
+  border: 2px solid #4a9dec;
+  box-shadow: 0px 0px 0px 7px rgb(74, 157, 236, 20%);
+  background-color: white;
+}
+
+.activeLink {
+  display: flex;
+  justify-items: center;
+  padding: 0.4rem;
+  border-radius: 10px;
+  gap: 0.5rem;
+}
+.activeLink:hover {
+  background-color: var(--color-primary-100);
+}
+
+.aciveingLink {
+  background: var(--color-primary-100);
+  color: var(--color-primary-900);
+}
+
+td {
+  border-bottom: 1px solid var(--color-primary-100);
+  padding: 0.7rem;
+}
+
+.badge_Type {
+  background: var(--color-success);
+  padding: 0.3rem;
+  border-radius: 10px;
+}
+
+li {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* Button style */
+.button-65 {
+  appearance: none;
+  backface-visibility: hidden;
+  background-color: #1366d6;
+  border-radius: 10px;
+  border-style: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif;
+  font-size: 21px;
+  font-weight: 500;
+  height: 50px;
+  letter-spacing: normal;
+  line-height: 1.5;
+  outline: none;
+  overflow: hidden;
+  padding: 14px 30px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+.button-65:hover {
+  background-color: #4780ca;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 5px 30px, rgba(0, 0, 0, 0.05) 0 1px 4px;
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: 0.35s;
+}
+.button-65:active {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 3px 6px 0, rgba(0, 0, 0, 0.1) 0 0 10px 0,
+    rgba(0, 0, 0, 0.1) 0 1px 4px -1px;
+  transform: translateY(2px);
+  transition-duration: 0.35s;
+}
+@media (min-width: 768px) {
+  .button-65 {
+    padding: 14px 22px;
+    width: 176px;
+  }
+}
+
+/* Gradient */
+.bg-gradient {
+  background-image: linear-gradient(to bottom, #a8ccf3, white);
+}
+
+/* Report containers */
+.Report_ContainerPart {
+  background-color: #fff;
+  margin-right: 2rem;
+  margin-left: 2rem;
+  padding: 2rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.Report_ContainerPart_Score {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 2rem;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+
+/* Search input UI */
+.containerSearchInput {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgb(179, 208, 253) 0%,
+    rgb(164, 202, 248) 100%
+  );
+  border-radius: 1000px;
+  padding: 10px;
+  display: grid;
+  place-content: center;
+  z-index: 0;
+  max-width: 250px;
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+  border-radius: 50px;
+  background: linear-gradient(
+    135deg,
+    rgb(218, 232, 247) 0%,
+    rgb(214, 229, 247) 100%
+  );
+  display: flex;
+  align-items: center;
+}
+
+.search-container::after,
+.search-container::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  position: absolute;
+}
+
+.search-container::before {
+  top: -1px;
+  left: -1px;
+  background: linear-gradient(0deg, rgb(218, 232, 247) 0%, rgb(255, 255, 255) 100%);
+  z-index: -1;
+}
+
+.search-container::after {
+  bottom: -1px;
+  right: -1px;
+  background: linear-gradient(0deg, rgb(163, 206, 255) 0%, rgb(211, 232, 255) 100%);
+  box-shadow: rgba(79, 156, 232, 0.702) 3px 3px 5px 0px,
+    rgba(79, 156, 232, 0.702) 5px 5px 20px 0px;
+  z-index: -2;
+}
+
+.inputSearch {
+  padding: 10px;
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    rgb(218, 232, 247) 0%,
+    rgb(214, 229, 247) 100%
+  );
+  border: none;
+  color: #9ebcd9;
+  font-size: 20px;
+  border-radius: 50px;
+}
+.inputSearch:focus {
+  outline: none;
+  background: linear-gradient(
+    135deg,
+    rgb(239, 247, 255) 0%,
+    rgb(214, 229, 247) 100%
+  );
+}
+
+.search__icon {
+  width: 50px;
+  aspect-ratio: 1;
+  border-left: 2px solid white;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-radius: 50%;
+  padding-left: 12px;
+  margin-right: 10px;
+}
+.search__icon:hover {
+  border-left: 3px solid white;
+}
+.search__icon path {
+  fill: white;
+}
+
+/* Blur box helper (you used bg-blur-box in components) */
+.bg-blur-box {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
